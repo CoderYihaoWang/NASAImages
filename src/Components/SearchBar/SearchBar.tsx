@@ -9,7 +9,6 @@ interface ISearchBarProps{
     SetUserInput: (a: IUserInput) => void;
 }
 
-
 function SearchBar(props: ISearchBarProps) {
 
     const [SearchQuery, setSearchQuery] = useState<string | null>("");

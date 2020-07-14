@@ -10,12 +10,9 @@ function App() {
     EndDate: new Date('2018-08-18T21:11:54'),
   });
 
-  function SetUserInput(a: IUserInput) {
-    setUserInput(a);    
-  }
   return (
     <div>
-      <SearchBar SetUserInput={(a: IUserInput) => SetUserInput(a)}></SearchBar>
+      <SearchBar SetUserInput={setUserInput}></SearchBar>
     </div>
   );
 }
