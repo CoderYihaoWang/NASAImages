@@ -13,26 +13,16 @@ interface ISearchBarProps{
 function SearchBar(props: ISearchBarProps) {
 
     const [SearchQuery, setSearchQuery] = useState<string | null>("");
-    const handleSearchQueryChange = (s: string | null) =>{
-        setSearchQuery(s);          
-    }
 
     const [HasFocus, setHasFocus] = useState<boolean>(false);
 
     const [StartDate, setStartDate] = useState<Date | null>(
         new Date('2014-08-18'),
     );
-    const handleStartDateChange = (date: Date | null) => {
-        setStartDate(date);
-    };
 
     const [EndDate, setEndDate] = useState<Date | null>(
         new Date('2020-05-18'),
     );
-
-    const handleEndDateChange = (date: Date | null) => {
-        setEndDate(date);
-    };
 
     const handleSubmit = () => {
         if (SearchQuery?.length !== 0 && SearchQuery !== null && SearchQuery !== "") {
@@ -58,7 +48,7 @@ function SearchBar(props: ISearchBarProps) {
                 error={HasFocus && SearchQuery === ""}
                 onClick={() => setHasFocus(true)}
                 value={SearchQuery}
-                onChange={e => handleSearchQueryChange(e.target.value)}
+                onChange={e => setSearchQuery(e.target.value)}
             />
         </Grid>
 
@@ -72,7 +62,7 @@ function SearchBar(props: ISearchBarProps) {
                     id="StartDate"
                     label="Start Date (optional)"
                     value={StartDate}
-                    onChange={handleStartDateChange}
+                    onChange={setStartDate}
                     KeyboardButtonProps={{
                         'aria-label': 'change date',
                     }}
@@ -87,7 +77,7 @@ function SearchBar(props: ISearchBarProps) {
                     id="EndData"
                     label="End Date (optional)"
                     value={EndDate}
-                    onChange={handleEndDateChange}
+                    onChange={setEndDate}
                     KeyboardButtonProps={{
                         'aria-label': 'change date',
                     }}
